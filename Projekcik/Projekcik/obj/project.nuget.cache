@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "5o+OVOnpbNKOs14DDTXJuLtToCN51yKlneiaFX4f9sm69lCezU4LJOMsVBovjYcq9R0K6lILtdWvZPFs9xUQyQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\48505\\Downloads\\555711_414246_ProjektPack\\ProjektPack\\Projekcik\\Projekcik\\Projekcik.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\48505\\.nuget\\packages\\commonservicelocator\\2.0.2\\commonservicelocator.2.0.2.nupkg.sha512",
+    "C:\\Users\\48505\\.nuget\\packages\\entityframework\\5.0.0\\entityframework.5.0.0.nupkg.sha512",
+    "C:\\Users\\48505\\.nuget\\packages\\materialdesigncolors\\2.0.9\\materialdesigncolors.2.0.9.nupkg.sha512",
+    "C:\\Users\\48505\\.nuget\\packages\\materialdesignthemes\\4.6.1\\materialdesignthemes.4.6.1.nupkg.sha512",
+    "C:\\Users\\48505\\.nuget\\packages\\mvvmlight\\5.4.1.1\\mvvmlight.5.4.1.1.nupkg.sha512",
+    "C:\\Users\\48505\\.nuget\\packages\\mvvmlightlibs\\5.4.1.1\\mvvmlightlibs.5.4.1.1.nupkg.sha512"
+  ],
+  "logs": []
+}

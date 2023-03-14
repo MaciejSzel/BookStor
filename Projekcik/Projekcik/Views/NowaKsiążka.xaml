@@ -1,0 +1,54 @@
+﻿<local:JedenViewBase x:Class="Projekcik.Views.NowaKsiążka"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Projekcik.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid Background="Azure">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Label Content="Tytuł:" Margin="0,8,0,8" Grid.Column="0" Grid.Row="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="50"/>
+        <TextBox Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" Width="100" Text="{Binding Path=Title, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Foreground="Black" />
+
+        <Label Content="Language Code:" Margin="0,8,0,8" Grid.Column="0" Grid.Row="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <ComboBox Grid.Column="1" Grid.Row="1" Margin="0,8,0,8" HorizontalAlignment="left" Width="120"
+                   ItemsSource="{Binding LanguageCodeComboBoxItems}" DisplayMemberPath="Value" SelectedValuePath="Key" SelectedValue="{Binding Path=lang_id, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Foreground="Black"/>
+
+        <Label Content="Język:" Margin="0,8,0,8" Grid.Column="0" Grid.Row="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+        <TextBox Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" Width="100" Text="{Binding Path=LanguageName, UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True}" Foreground="Black"/>
+
+         <Label Content="Liczba stron:" Margin="0,8,0,8" Grid.Column="0" Grid.Row="3" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <TextBox Grid.Column="1" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Center" Width="100" Text="{Binding Path=Pages, UpdateSourceTrigger=PropertyChanged}" Foreground="Black"/>
+
+        <Label Content="Data wydania:" Margin="0,8,0,8" Grid.Column="0" Grid.Row="4" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <DatePicker Grid.Column="1" Grid.Row="4"  HorizontalAlignment="left" Width="100" SelectedDate="{Binding Path=PublicationDate, UpdateSourceTrigger=PropertyChanged}" Foreground="Black"/>
+
+        <Label Content="Wydawca:" Margin="0,8,0,8" Grid.Column="0" Grid.Row="5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <TextBox Grid.Column="1" Grid.Row="5" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120" Text="{Binding Path=PublisherName, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, ValidatesOnDataErrors=True}" Foreground="Black"/>
+
+        <Label Content="Cena:" Margin="0,8,0,8" Grid.Column="0" Grid.Row="6" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <TextBox Grid.Column="1" Grid.Row="6" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120" Text="{Binding Path=Cena, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, ValidatesOnDataErrors=True}" Foreground="Black"/>
+
+        <Label Content="Autor:" Margin="0,8,0,8" Grid.Column="0" Grid.Row="7" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <TextBox Grid.Column="1" Grid.Row="7" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120" IsEnabled="False" Text="{Binding Path=AuthorName, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Foreground="Black"/>
+
+        <Button Content="..." Grid.Column="1" Grid.Row="7" Width="30" HorizontalAlignment="Right" Command="{Binding ShowAutorzy}"/>
+
+        <Button Content="Dodaj" Width="100" HorizontalAlignment="Left" Command="{Binding SaveAndCloseCommand}"/>
+
+    </Grid>
+</local:JedenViewBase>

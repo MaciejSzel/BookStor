@@ -1,0 +1,439 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BookStoreModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="address">
+    <Key>
+      <PropertyRef Name="address_id" />
+    </Key>
+    <Property Name="address_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="street_number" Type="varchar" MaxLength="10" />
+    <Property Name="street_name" Type="varchar" MaxLength="200" />
+    <Property Name="city" Type="varchar" MaxLength="100" />
+    <Property Name="country_id" Type="int" />
+  </EntityType>
+  <EntityType Name="address_status">
+    <Key>
+      <PropertyRef Name="status_id" />
+    </Key>
+    <Property Name="status_id" Type="int" Nullable="false" />
+    <Property Name="address_status" Type="varchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="author">
+    <Key>
+      <PropertyRef Name="author_id" />
+    </Key>
+    <Property Name="author_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="author_name" Type="varchar" MaxLength="400" />
+  </EntityType>
+  <EntityType Name="book">
+    <Key>
+      <PropertyRef Name="book_id" />
+    </Key>
+    <Property Name="book_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="varchar" MaxLength="400" />
+    <Property Name="language_id" Type="int" Nullable="false" />
+    <Property Name="num_pages" Type="int" />
+    <Property Name="publication_date" Type="date" />
+    <Property Name="publisher_id" Type="int" Nullable="false" />
+    <Property Name="AuthorId" Type="int" />
+    <Property Name="PriceId" Type="int" />
+    <Property Name="Cena" Type="decimal" Precision="18" Scale="0" />
+  </EntityType>
+  <EntityType Name="book_author">
+    <Key>
+      <PropertyRef Name="book_id" />
+    </Key>
+    <Property Name="book_id" Type="int" Nullable="false" />
+    <Property Name="author_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="book_language">
+    <Key>
+      <PropertyRef Name="language_id" />
+    </Key>
+    <Property Name="language_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="language_code" Type="varchar" MaxLength="8" />
+    <Property Name="language_name" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="country">
+    <Key>
+      <PropertyRef Name="country_id" />
+    </Key>
+    <Property Name="country_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="country_name" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="cust_order">
+    <Key>
+      <PropertyRef Name="order_id" />
+    </Key>
+    <Property Name="order_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="order_date" Type="datetime" />
+    <Property Name="customer_id" Type="int" />
+    <Property Name="shipping_method_id" Type="int" />
+    <Property Name="dest_address_id" Type="int" />
+    <Property Name="prId" Type="int" />
+  </EntityType>
+  <EntityType Name="customer">
+    <Key>
+      <PropertyRef Name="customer_id" />
+    </Key>
+    <Property Name="customer_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="first_name" Type="varchar" MaxLength="200" />
+    <Property Name="last_name" Type="varchar" MaxLength="200" />
+    <Property Name="email" Type="varchar" MaxLength="350" />
+    <Property Name="addres_id" Type="int" />
+    <Property Name="stat_id" Type="int" />
+  </EntityType>
+  <EntityType Name="customer_address">
+    <Key>
+      <PropertyRef Name="customer_id" />
+      <PropertyRef Name="address_id" />
+    </Key>
+    <Property Name="customer_id" Type="int" Nullable="false" />
+    <Property Name="address_id" Type="int" Nullable="false" />
+    <Property Name="status_id" Type="int" />
+  </EntityType>
+  <EntityType Name="order_history">
+    <Key>
+      <PropertyRef Name="history_id" />
+    </Key>
+    <Property Name="history_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="order_id" Type="int" />
+    <Property Name="status_id" Type="int" />
+    <Property Name="status_date" Type="datetime" />
+  </EntityType>
+  <EntityType Name="order_line">
+    <Key>
+      <PropertyRef Name="line_id" />
+    </Key>
+    <Property Name="line_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="order_id" Type="int" />
+    <Property Name="book_id" Type="int" />
+    <Property Name="price" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="order_status">
+    <Key>
+      <PropertyRef Name="status_id" />
+    </Key>
+    <Property Name="status_id" Type="int" Nullable="false" />
+    <Property Name="status_value" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="publisher">
+    <Key>
+      <PropertyRef Name="publisher_id" />
+    </Key>
+    <Property Name="publisher_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="publisher_name" Type="varchar" MaxLength="400" />
+  </EntityType>
+  <EntityType Name="shipping_method">
+    <Key>
+      <PropertyRef Name="method_id" />
+    </Key>
+    <Property Name="method_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="method_name" Type="varchar" MaxLength="100" />
+    <Property Name="cost" Type="decimal" Precision="6" Scale="2" />
+  </EntityType>
+  <Association Name="FK_address_address">
+    <End Role="address" Type="Self.address" Multiplicity="1" />
+    <End Role="address1" Type="Self.address" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="address">
+        <PropertyRef Name="address_id" />
+      </Principal>
+      <Dependent Role="address1">
+        <PropertyRef Name="address_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_address_country">
+    <End Role="country" Type="Self.country" Multiplicity="0..1" />
+    <End Role="address" Type="Self.address" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="country">
+        <PropertyRef Name="country_id" />
+      </Principal>
+      <Dependent Role="address">
+        <PropertyRef Name="country_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_ba_author">
+    <End Role="author" Type="Self.author" Multiplicity="1" />
+    <End Role="book_author" Type="Self.book_author" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="author">
+        <PropertyRef Name="author_id" />
+      </Principal>
+      <Dependent Role="book_author">
+        <PropertyRef Name="author_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_ba_book">
+    <End Role="book" Type="Self.book" Multiplicity="1" />
+    <End Role="book_author" Type="Self.book_author" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="book">
+        <PropertyRef Name="book_id" />
+      </Principal>
+      <Dependent Role="book_author">
+        <PropertyRef Name="book_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_book_order_line">
+    <End Role="order_line" Type="Self.order_line" Multiplicity="0..1" />
+    <End Role="book" Type="Self.book" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="order_line">
+        <PropertyRef Name="line_id" />
+      </Principal>
+      <Dependent Role="book">
+        <PropertyRef Name="PriceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_ca_cust">
+    <End Role="customer" Type="Self.customer" Multiplicity="1" />
+    <End Role="customer_address" Type="Self.customer_address" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customer">
+        <PropertyRef Name="customer_id" />
+      </Principal>
+      <Dependent Role="customer_address">
+        <PropertyRef Name="customer_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_cust_order_cust_order">
+    <End Role="order_line" Type="Self.order_line" Multiplicity="0..1" />
+    <End Role="cust_order" Type="Self.cust_order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="order_line">
+        <PropertyRef Name="line_id" />
+      </Principal>
+      <Dependent Role="cust_order">
+        <PropertyRef Name="prId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_customer_address">
+    <End Role="address" Type="Self.address" Multiplicity="0..1" />
+    <End Role="customer" Type="Self.customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="address">
+        <PropertyRef Name="address_id" />
+      </Principal>
+      <Dependent Role="customer">
+        <PropertyRef Name="addres_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_customer_address_address_status">
+    <End Role="address_status" Type="Self.address_status" Multiplicity="0..1" />
+    <End Role="customer_address" Type="Self.customer_address" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="address_status">
+        <PropertyRef Name="status_id" />
+      </Principal>
+      <Dependent Role="customer_address">
+        <PropertyRef Name="status_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_customer_address_customer">
+    <End Role="customer" Type="Self.customer" Multiplicity="1" />
+    <End Role="customer_address" Type="Self.customer_address" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customer">
+        <PropertyRef Name="customer_id" />
+      </Principal>
+      <Dependent Role="customer_address">
+        <PropertyRef Name="customer_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_customer_address_status">
+    <End Role="address_status" Type="Self.address_status" Multiplicity="0..1" />
+    <End Role="customer" Type="Self.customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="address_status">
+        <PropertyRef Name="status_id" />
+      </Principal>
+      <Dependent Role="customer">
+        <PropertyRef Name="stat_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_oh_order">
+    <End Role="cust_order" Type="Self.cust_order" Multiplicity="0..1" />
+    <End Role="order_history" Type="Self.order_history" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cust_order">
+        <PropertyRef Name="order_id" />
+      </Principal>
+      <Dependent Role="order_history">
+        <PropertyRef Name="order_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_oh_status">
+    <End Role="order_status" Type="Self.order_status" Multiplicity="0..1" />
+    <End Role="order_history" Type="Self.order_history" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="order_status">
+        <PropertyRef Name="status_id" />
+      </Principal>
+      <Dependent Role="order_history">
+        <PropertyRef Name="status_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_ol_book">
+    <End Role="book" Type="Self.book" Multiplicity="0..1" />
+    <End Role="order_line" Type="Self.order_line" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="book">
+        <PropertyRef Name="book_id" />
+      </Principal>
+      <Dependent Role="order_line">
+        <PropertyRef Name="book_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_ol_order">
+    <End Role="cust_order" Type="Self.cust_order" Multiplicity="0..1" />
+    <End Role="order_line" Type="Self.order_line" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cust_order">
+        <PropertyRef Name="order_id" />
+      </Principal>
+      <Dependent Role="order_line">
+        <PropertyRef Name="order_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_order_addr">
+    <End Role="address" Type="Self.address" Multiplicity="0..1" />
+    <End Role="cust_order" Type="Self.cust_order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="address">
+        <PropertyRef Name="address_id" />
+      </Principal>
+      <Dependent Role="cust_order">
+        <PropertyRef Name="dest_address_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_order_cust">
+    <End Role="customer" Type="Self.customer" Multiplicity="0..1" />
+    <End Role="cust_order" Type="Self.cust_order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customer">
+        <PropertyRef Name="customer_id" />
+      </Principal>
+      <Dependent Role="cust_order">
+        <PropertyRef Name="customer_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_order_ship">
+    <End Role="shipping_method" Type="Self.shipping_method" Multiplicity="0..1" />
+    <End Role="cust_order" Type="Self.cust_order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="shipping_method">
+        <PropertyRef Name="method_id" />
+      </Principal>
+      <Dependent Role="cust_order">
+        <PropertyRef Name="shipping_method_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BookStoreModelStoreContainer">
+    <EntitySet Name="address" EntityType="Self.address" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="address_status" EntityType="Self.address_status" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="author" EntityType="Self.author" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="book" EntityType="Self.book" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="book_author" EntityType="Self.book_author" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="book_language" EntityType="Self.book_language" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="country" EntityType="Self.country" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="cust_order" EntityType="Self.cust_order" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="customer" EntityType="Self.customer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="customer_address" EntityType="Self.customer_address" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="order_history" EntityType="Self.order_history" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="order_line" EntityType="Self.order_line" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="order_status" EntityType="Self.order_status" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="publisher" EntityType="Self.publisher" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="shipping_method" EntityType="Self.shipping_method" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_address_address" Association="Self.FK_address_address">
+      <End Role="address" EntitySet="address" />
+      <End Role="address1" EntitySet="address" />
+    </AssociationSet>
+    <AssociationSet Name="FK_address_country" Association="Self.FK_address_country">
+      <End Role="country" EntitySet="country" />
+      <End Role="address" EntitySet="address" />
+    </AssociationSet>
+    <AssociationSet Name="fk_ba_author" Association="Self.fk_ba_author">
+      <End Role="author" EntitySet="author" />
+      <End Role="book_author" EntitySet="book_author" />
+    </AssociationSet>
+    <AssociationSet Name="fk_ba_book" Association="Self.fk_ba_book">
+      <End Role="book" EntitySet="book" />
+      <End Role="book_author" EntitySet="book_author" />
+    </AssociationSet>
+    <AssociationSet Name="FK_book_order_line" Association="Self.FK_book_order_line">
+      <End Role="order_line" EntitySet="order_line" />
+      <End Role="book" EntitySet="book" />
+    </AssociationSet>
+    <AssociationSet Name="fk_ca_cust" Association="Self.fk_ca_cust">
+      <End Role="customer" EntitySet="customer" />
+      <End Role="customer_address" EntitySet="customer_address" />
+    </AssociationSet>
+    <AssociationSet Name="FK_cust_order_cust_order" Association="Self.FK_cust_order_cust_order">
+      <End Role="order_line" EntitySet="order_line" />
+      <End Role="cust_order" EntitySet="cust_order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_customer_address" Association="Self.FK_customer_address">
+      <End Role="address" EntitySet="address" />
+      <End Role="customer" EntitySet="customer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_customer_address_address_status" Association="Self.FK_customer_address_address_status">
+      <End Role="address_status" EntitySet="address_status" />
+      <End Role="customer_address" EntitySet="customer_address" />
+    </AssociationSet>
+    <AssociationSet Name="FK_customer_address_customer" Association="Self.FK_customer_address_customer">
+      <End Role="customer" EntitySet="customer" />
+      <End Role="customer_address" EntitySet="customer_address" />
+    </AssociationSet>
+    <AssociationSet Name="FK_customer_address_status" Association="Self.FK_customer_address_status">
+      <End Role="address_status" EntitySet="address_status" />
+      <End Role="customer" EntitySet="customer" />
+    </AssociationSet>
+    <AssociationSet Name="fk_oh_order" Association="Self.fk_oh_order">
+      <End Role="cust_order" EntitySet="cust_order" />
+      <End Role="order_history" EntitySet="order_history" />
+    </AssociationSet>
+    <AssociationSet Name="fk_oh_status" Association="Self.fk_oh_status">
+      <End Role="order_status" EntitySet="order_status" />
+      <End Role="order_history" EntitySet="order_history" />
+    </AssociationSet>
+    <AssociationSet Name="fk_ol_book" Association="Self.fk_ol_book">
+      <End Role="book" EntitySet="book" />
+      <End Role="order_line" EntitySet="order_line" />
+    </AssociationSet>
+    <AssociationSet Name="fk_ol_order" Association="Self.fk_ol_order">
+      <End Role="cust_order" EntitySet="cust_order" />
+      <End Role="order_line" EntitySet="order_line" />
+    </AssociationSet>
+    <AssociationSet Name="fk_order_addr" Association="Self.fk_order_addr">
+      <End Role="address" EntitySet="address" />
+      <End Role="cust_order" EntitySet="cust_order" />
+    </AssociationSet>
+    <AssociationSet Name="fk_order_cust" Association="Self.fk_order_cust">
+      <End Role="customer" EntitySet="customer" />
+      <End Role="cust_order" EntitySet="cust_order" />
+    </AssociationSet>
+    <AssociationSet Name="fk_order_ship" Association="Self.fk_order_ship">
+      <End Role="shipping_method" EntitySet="shipping_method" />
+      <End Role="cust_order" EntitySet="cust_order" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BookStoreModelStoreContainer" CdmEntityContainer="BookStoreEntities">
+    <EntitySetMapping Name="address">
+      <EntityTypeMapping TypeName="BookStoreModel.address">
+        <MappingFragment StoreEntitySet="address">
+          <ScalarProperty Name="address_id" ColumnName="address_id" />
+          <ScalarProperty Name="street_number" ColumnName="street_number" />
+          <ScalarProperty Name="street_name" ColumnName="street_name" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="country_id" ColumnName="country_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="address_status">
+      <EntityTypeMapping TypeName="BookStoreModel.address_status">
+        <MappingFragment StoreEntitySet="address_status">
+          <ScalarProperty Name="status_id" ColumnName="status_id" />
+          <ScalarProperty Name="address_status1" ColumnName="address_status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="author">
+      <EntityTypeMapping TypeName="BookStoreModel.author">
+        <MappingFragment StoreEntitySet="author">
+          <ScalarProperty Name="author_id" ColumnName="author_id" />
+          <ScalarProperty Name="author_name" ColumnName="author_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="book">
+      <EntityTypeMapping TypeName="BookStoreModel.book">
+        <MappingFragment StoreEntitySet="book">
+          <ScalarProperty Name="Cena" ColumnName="Cena" />
+          <ScalarProperty Name="book_id" ColumnName="book_id" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="language_id" ColumnName="language_id" />
+          <ScalarProperty Name="num_pages" ColumnName="num_pages" />
+          <ScalarProperty Name="publication_date" ColumnName="publication_date" />
+          <ScalarProperty Name="publisher_id" ColumnName="publisher_id" />
+          <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
+          <ScalarProperty Name="PriceId" ColumnName="PriceId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="book_language">
+      <EntityTypeMapping TypeName="BookStoreModel.book_language">
+        <MappingFragment StoreEntitySet="book_language">
+          <ScalarProperty Name="language_id" ColumnName="language_id" />
+          <ScalarProperty Name="language_code" ColumnName="language_code" />
+          <ScalarProperty Name="language_name" ColumnName="language_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="country">
+      <EntityTypeMapping TypeName="BookStoreModel.country">
+        <MappingFragment StoreEntitySet="country">
+          <ScalarProperty Name="country_id" ColumnName="country_id" />
+          <ScalarProperty Name="country_name" ColumnName="country_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cust_order">
+      <EntityTypeMapping TypeName="BookStoreModel.cust_order">
+        <MappingFragment StoreEntitySet="cust_order">
+          <ScalarProperty Name="prId" ColumnName="prId" />
+          <ScalarProperty Name="order_id" ColumnName="order_id" />
+          <ScalarProperty Name="order_date" ColumnName="order_date" />
+          <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+          <ScalarProperty Name="shipping_method_id" ColumnName="shipping_method_id" />
+          <ScalarProperty Name="dest_address_id" ColumnName="dest_address_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="customer">
+      <EntityTypeMapping TypeName="BookStoreModel.customer">
+        <MappingFragment StoreEntitySet="customer">
+          <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+          <ScalarProperty Name="first_name" ColumnName="first_name" />
+          <ScalarProperty Name="last_name" ColumnName="last_name" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="addres_id" ColumnName="addres_id" />
+          <ScalarProperty Name="stat_id" ColumnName="stat_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="customer_address">
+      <EntityTypeMapping TypeName="BookStoreModel.customer_address">
+        <MappingFragment StoreEntitySet="customer_address">
+          <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+          <ScalarProperty Name="address_id" ColumnName="address_id" />
+          <ScalarProperty Name="status_id" ColumnName="status_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="order_history">
+      <EntityTypeMapping TypeName="BookStoreModel.order_history">
+        <MappingFragment StoreEntitySet="order_history">
+          <ScalarProperty Name="history_id" ColumnName="history_id" />
+          <ScalarProperty Name="order_id" ColumnName="order_id" />
+          <ScalarProperty Name="status_id" ColumnName="status_id" />
+          <ScalarProperty Name="status_date" ColumnName="status_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="order_line">
+      <EntityTypeMapping TypeName="BookStoreModel.order_line">
+        <MappingFragment StoreEntitySet="order_line">
+          <ScalarProperty Name="line_id" ColumnName="line_id" />
+          <ScalarProperty Name="order_id" ColumnName="order_id" />
+          <ScalarProperty Name="book_id" ColumnName="book_id" />
+          <ScalarProperty Name="price" ColumnName="price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="order_status">
+      <EntityTypeMapping TypeName="BookStoreModel.order_status">
+        <MappingFragment StoreEntitySet="order_status">
+          <ScalarProperty Name="status_id" ColumnName="status_id" />
+          <ScalarProperty Name="status_value" ColumnName="status_value" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="publisher">
+      <EntityTypeMapping TypeName="BookStoreModel.publisher">
+        <MappingFragment StoreEntitySet="publisher">
+          <ScalarProperty Name="publisher_id" ColumnName="publisher_id" />
+          <ScalarProperty Name="publisher_name" ColumnName="publisher_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="shipping_method">
+      <EntityTypeMapping TypeName="BookStoreModel.shipping_method">
+        <MappingFragment StoreEntitySet="shipping_method">
+          <ScalarProperty Name="method_id" ColumnName="method_id" />
+          <ScalarProperty Name="method_name" ColumnName="method_name" />
+          <ScalarProperty Name="cost" ColumnName="cost" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="book_author" TypeName="BookStoreModel.book_author" StoreEntitySet="book_author">
+      <EndProperty Name="author">
+        <ScalarProperty Name="author_id" ColumnName="author_id" />
+      </EndProperty>
+      <EndProperty Name="book">
+        <ScalarProperty Name="book_id" ColumnName="book_id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

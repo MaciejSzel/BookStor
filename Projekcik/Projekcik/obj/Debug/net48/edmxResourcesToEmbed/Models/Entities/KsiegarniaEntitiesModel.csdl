@@ -1,0 +1,375 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="KsięgarniaDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Demo">
+    <Key>
+      <PropertyRef Name="IDDEMO" />
+    </Key>
+    <Property Name="IDDEMO" Type="Int32" Nullable="false" />
+    <Property Name="DEMO1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Gry">
+    <Key>
+      <PropertyRef Name="IdGry" />
+    </Key>
+    <Property Name="IdGry" Type="Int32" Nullable="false" />
+    <Property Name="Nazwa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Opis" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Ilosc" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="GryPos" Relationship="Self.FK_GryPos_Gry" FromRole="Gry" ToRole="GryPos" />
+  </EntityType>
+  <EntityType Name="Kategoria">
+    <Key>
+      <PropertyRef Name="IdKategoria" />
+    </Key>
+    <Property Name="IdKategoria" Type="Int32" Nullable="false" />
+    <Property Name="Nazwa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Kategoria1" Relationship="Self.FK_Kategoria_Kategoria" FromRole="Kategoria" ToRole="Kategoria1" />
+    <NavigationProperty Name="Kategoria2" Relationship="Self.FK_Kategoria_Kategoria" FromRole="Kategoria1" ToRole="Kategoria" />
+    <NavigationProperty Name="KategoriaGryPos" Relationship="Self.FK_KategoriaGryPos_Kategoria" FromRole="Kategoria" ToRole="KategoriaGryPos" />
+    <NavigationProperty Name="KategoriaPos" Relationship="Self.FK_KategoriaPos_Kategoria" FromRole="Kategoria" ToRole="KategoriaPos" />
+  </EntityType>
+  <EntityType Name="KategoriaPos">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="IdKsiazki" Type="Int32" Nullable="false" />
+    <Property Name="IdKategoria" Type="Int32" Nullable="false" />
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Kategoria" Relationship="Self.FK_KategoriaPos_Kategoria" FromRole="KategoriaPos" ToRole="Kategoria" />
+    <NavigationProperty Name="Ksiazka" Relationship="Self.FK_KategoriaPos_Ksiazka" FromRole="KategoriaPos" ToRole="Ksiazka" />
+  </EntityType>
+  <EntityType Name="Klient">
+    <Key>
+      <PropertyRef Name="IdKlienta" />
+    </Key>
+    <Property Name="IdKlienta" Type="Int32" Nullable="false" />
+    <Property Name="Nazwa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Adres" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Zamowienia" Relationship="Self.KlientPos" FromRole="Klient" ToRole="Zamowienia" />
+  </EntityType>
+  <EntityType Name="Ksiazka">
+    <Key>
+      <PropertyRef Name="IdKsiazki" />
+    </Key>
+    <Property Name="IdKsiazki" Type="Int32" Nullable="false" />
+    <Property Name="Ilosc" Type="Int32" Nullable="false" />
+    <Property Name="Nazwa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Opis" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="KategoriaPos" Relationship="Self.FK_KategoriaPos_Ksiazka" FromRole="Ksiazka" ToRole="KategoriaPos" />
+    <NavigationProperty Name="Magazyn" Relationship="Self.FK_Magazyn_Ksiazka" FromRole="Ksiazka" ToRole="Magazyn" />
+    <NavigationProperty Name="Sprzedaz" Relationship="Self.FK_Sprzedaz_Ksiazka" FromRole="Ksiazka" ToRole="Sprzedaz" />
+    <NavigationProperty Name="ZamowieniaPos" Relationship="Self.FK_ZamowieniaPos_Ksiazka" FromRole="Ksiazka" ToRole="ZamowieniaPos" />
+  </EntityType>
+  <EntityType Name="Kurier">
+    <Key>
+      <PropertyRef Name="IdKuriera" />
+    </Key>
+    <Property Name="IdKuriera" Type="Int32" Nullable="false" />
+    <Property Name="Nazwa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Cena" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <NavigationProperty Name="Kurier1" Relationship="Self.FK_Kurier_Kurier" FromRole="Kurier" ToRole="Kurier1" />
+    <NavigationProperty Name="Kurier2" Relationship="Self.FK_Kurier_Kurier" FromRole="Kurier1" ToRole="Kurier" />
+    <NavigationProperty Name="Zamowienia" Relationship="Self.FK_Zamowienia_Kurier" FromRole="Kurier" ToRole="Zamowienia" />
+  </EntityType>
+  <EntityType Name="Zamowienia">
+    <Key>
+      <PropertyRef Name="IdZamowienia" />
+    </Key>
+    <Property Name="IdZamowienia" Type="Int32" Nullable="false" />
+    <Property Name="IdKuriera" Type="Int32" Nullable="false" />
+    <Property Name="Ilosc" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Kurier" Relationship="Self.FK_Zamowienia_Kurier" FromRole="Zamowienia" ToRole="Kurier" />
+    <NavigationProperty Name="GryPos" Relationship="Self.FK_GryPos_Zamowienia" FromRole="Zamowienia" ToRole="GryPos" />
+    <NavigationProperty Name="ZamowieniaPos" Relationship="Self.FK_ZamowieniaPos_Zamowienia" FromRole="Zamowienia" ToRole="ZamowieniaPos" />
+    <NavigationProperty Name="Klient" Relationship="Self.KlientPos" FromRole="Zamowienia" ToRole="Klient" />
+  </EntityType>
+  <EntityType Name="GryPos">
+    <Key>
+      <PropertyRef Name="IdZamowienia" />
+      <PropertyRef Name="IdGry" />
+      <PropertyRef Name="IloscZamowionych" />
+    </Key>
+    <Property Name="IdZamowienia" Type="Int32" Nullable="false" />
+    <Property Name="IdGry" Type="Int32" Nullable="false" />
+    <Property Name="IloscZamowionych" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Gry" Relationship="Self.FK_GryPos_Gry" FromRole="GryPos" ToRole="Gry" />
+    <NavigationProperty Name="Zamowienia" Relationship="Self.FK_GryPos_Zamowienia" FromRole="GryPos" ToRole="Zamowienia" />
+  </EntityType>
+  <EntityType Name="KategoriaGryPos">
+    <Key>
+      <PropertyRef Name="IdGry" />
+      <PropertyRef Name="IdKategoria" />
+    </Key>
+    <Property Name="IdGry" Type="Int32" Nullable="false" />
+    <Property Name="IdKategoria" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Kategoria" Relationship="Self.FK_KategoriaGryPos_Kategoria" FromRole="KategoriaGryPos" ToRole="Kategoria" />
+  </EntityType>
+  <EntityType Name="Magazyn">
+    <Key>
+      <PropertyRef Name="IdKsiazki" />
+      <PropertyRef Name="LiczbaWMagazynie" />
+    </Key>
+    <Property Name="IdKsiazki" Type="Int32" Nullable="false" />
+    <Property Name="LiczbaWMagazynie" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Ksiazka" Relationship="Self.FK_Magazyn_Ksiazka" FromRole="Magazyn" ToRole="Ksiazka" />
+  </EntityType>
+  <EntityType Name="Pracownik">
+    <Key>
+      <PropertyRef Name="IdPracownika" />
+      <PropertyRef Name="Imie" />
+      <PropertyRef Name="Nazwisko" />
+      <PropertyRef Name="Stanowisko" />
+    </Key>
+    <Property Name="IdPracownika" Type="Int32" Nullable="false" />
+    <Property Name="Imie" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Nazwisko" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Stanowisko" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Rabat">
+    <Key>
+      <PropertyRef Name="Rabat1" />
+      <PropertyRef Name="Kod" />
+    </Key>
+    <Property Name="Rabat1" Type="Double" Nullable="false" />
+    <Property Name="Kod" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Sprzedaz">
+    <Key>
+      <PropertyRef Name="IdKsiazki" />
+      <PropertyRef Name="IloscSprzedanych" />
+    </Key>
+    <Property Name="IdKsiazki" Type="Int32" Nullable="false" />
+    <Property Name="IloscSprzedanych" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Ksiazka" Relationship="Self.FK_Sprzedaz_Ksiazka" FromRole="Sprzedaz" ToRole="Ksiazka" />
+  </EntityType>
+  <EntityType Name="ZamowieniaPos">
+    <Key>
+      <PropertyRef Name="IdKsiazki" />
+      <PropertyRef Name="IdZamowienia" />
+      <PropertyRef Name="Ilosc" />
+    </Key>
+    <Property Name="IdKsiazki" Type="Int32" Nullable="false" />
+    <Property Name="IdZamowienia" Type="Int32" Nullable="false" />
+    <Property Name="Ilosc" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Ksiazka" Relationship="Self.FK_ZamowieniaPos_Ksiazka" FromRole="ZamowieniaPos" ToRole="Ksiazka" />
+    <NavigationProperty Name="Zamowienia" Relationship="Self.FK_ZamowieniaPos_Zamowienia" FromRole="ZamowieniaPos" ToRole="Zamowienia" />
+  </EntityType>
+  <Association Name="FK_GryPos_Gry">
+    <End Role="Gry" Type="Self.Gry" Multiplicity="1" />
+    <End Role="GryPos" Type="Self.GryPos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Gry">
+        <PropertyRef Name="IdGry" />
+      </Principal>
+      <Dependent Role="GryPos">
+        <PropertyRef Name="IdGry" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Kategoria_Kategoria">
+    <End Role="Kategoria" Type="Self.Kategoria" Multiplicity="1" />
+    <End Role="Kategoria1" Type="Self.Kategoria" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Kategoria">
+        <PropertyRef Name="IdKategoria" />
+      </Principal>
+      <Dependent Role="Kategoria1">
+        <PropertyRef Name="IdKategoria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_KategoriaGryPos_Kategoria">
+    <End Role="Kategoria" Type="Self.Kategoria" Multiplicity="1" />
+    <End Role="KategoriaGryPos" Type="Self.KategoriaGryPos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kategoria">
+        <PropertyRef Name="IdKategoria" />
+      </Principal>
+      <Dependent Role="KategoriaGryPos">
+        <PropertyRef Name="IdKategoria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_KategoriaPos_Kategoria">
+    <End Role="Kategoria" Type="Self.Kategoria" Multiplicity="1" />
+    <End Role="KategoriaPos" Type="Self.KategoriaPos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kategoria">
+        <PropertyRef Name="IdKategoria" />
+      </Principal>
+      <Dependent Role="KategoriaPos">
+        <PropertyRef Name="IdKategoria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_KategoriaPos_Ksiazka">
+    <End Role="Ksiazka" Type="Self.Ksiazka" Multiplicity="1" />
+    <End Role="KategoriaPos" Type="Self.KategoriaPos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ksiazka">
+        <PropertyRef Name="IdKsiazki" />
+      </Principal>
+      <Dependent Role="KategoriaPos">
+        <PropertyRef Name="IdKsiazki" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Magazyn_Ksiazka">
+    <End Role="Ksiazka" Type="Self.Ksiazka" Multiplicity="1" />
+    <End Role="Magazyn" Type="Self.Magazyn" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ksiazka">
+        <PropertyRef Name="IdKsiazki" />
+      </Principal>
+      <Dependent Role="Magazyn">
+        <PropertyRef Name="IdKsiazki" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sprzedaz_Ksiazka">
+    <End Role="Ksiazka" Type="Self.Ksiazka" Multiplicity="1" />
+    <End Role="Sprzedaz" Type="Self.Sprzedaz" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ksiazka">
+        <PropertyRef Name="IdKsiazki" />
+      </Principal>
+      <Dependent Role="Sprzedaz">
+        <PropertyRef Name="IdKsiazki" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ZamowieniaPos_Ksiazka">
+    <End Role="Ksiazka" Type="Self.Ksiazka" Multiplicity="1" />
+    <End Role="ZamowieniaPos" Type="Self.ZamowieniaPos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ksiazka">
+        <PropertyRef Name="IdKsiazki" />
+      </Principal>
+      <Dependent Role="ZamowieniaPos">
+        <PropertyRef Name="IdKsiazki" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Kurier_Kurier">
+    <End Role="Kurier" Type="Self.Kurier" Multiplicity="1" />
+    <End Role="Kurier1" Type="Self.Kurier" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Kurier">
+        <PropertyRef Name="IdKuriera" />
+      </Principal>
+      <Dependent Role="Kurier1">
+        <PropertyRef Name="IdKuriera" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Zamowienia_Kurier">
+    <End Role="Kurier" Type="Self.Kurier" Multiplicity="1" />
+    <End Role="Zamowienia" Type="Self.Zamowienia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kurier">
+        <PropertyRef Name="IdKuriera" />
+      </Principal>
+      <Dependent Role="Zamowienia">
+        <PropertyRef Name="IdKuriera" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GryPos_Zamowienia">
+    <End Role="Zamowienia" Type="Self.Zamowienia" Multiplicity="1" />
+    <End Role="GryPos" Type="Self.GryPos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Zamowienia">
+        <PropertyRef Name="IdZamowienia" />
+      </Principal>
+      <Dependent Role="GryPos">
+        <PropertyRef Name="IdZamowienia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ZamowieniaPos_Zamowienia">
+    <End Role="Zamowienia" Type="Self.Zamowienia" Multiplicity="1" />
+    <End Role="ZamowieniaPos" Type="Self.ZamowieniaPos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Zamowienia">
+        <PropertyRef Name="IdZamowienia" />
+      </Principal>
+      <Dependent Role="ZamowieniaPos">
+        <PropertyRef Name="IdZamowienia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="KlientPos">
+    <End Role="Klient" Type="Self.Klient" Multiplicity="*" />
+    <End Role="Zamowienia" Type="Self.Zamowienia" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="KsięgarniaDbEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Demo" EntityType="Self.Demo" />
+    <EntitySet Name="Gry" EntityType="Self.Gry" />
+    <EntitySet Name="Kategoria" EntityType="Self.Kategoria" />
+    <EntitySet Name="KategoriaPos" EntityType="Self.KategoriaPos" />
+    <EntitySet Name="Klient" EntityType="Self.Klient" />
+    <EntitySet Name="Ksiazka" EntityType="Self.Ksiazka" />
+    <EntitySet Name="Kurier" EntityType="Self.Kurier" />
+    <EntitySet Name="Zamowienia" EntityType="Self.Zamowienia" />
+    <EntitySet Name="GryPos" EntityType="Self.GryPos" />
+    <EntitySet Name="KategoriaGryPos" EntityType="Self.KategoriaGryPos" />
+    <EntitySet Name="Magazyn" EntityType="Self.Magazyn" />
+    <EntitySet Name="Pracownik" EntityType="Self.Pracownik" />
+    <EntitySet Name="Rabat" EntityType="Self.Rabat" />
+    <EntitySet Name="Sprzedaz" EntityType="Self.Sprzedaz" />
+    <EntitySet Name="ZamowieniaPos" EntityType="Self.ZamowieniaPos" />
+    <AssociationSet Name="FK_GryPos_Gry" Association="Self.FK_GryPos_Gry">
+      <End Role="Gry" EntitySet="Gry" />
+      <End Role="GryPos" EntitySet="GryPos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Kategoria_Kategoria" Association="Self.FK_Kategoria_Kategoria">
+      <End Role="Kategoria" EntitySet="Kategoria" />
+      <End Role="Kategoria1" EntitySet="Kategoria" />
+    </AssociationSet>
+    <AssociationSet Name="FK_KategoriaGryPos_Kategoria" Association="Self.FK_KategoriaGryPos_Kategoria">
+      <End Role="Kategoria" EntitySet="Kategoria" />
+      <End Role="KategoriaGryPos" EntitySet="KategoriaGryPos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_KategoriaPos_Kategoria" Association="Self.FK_KategoriaPos_Kategoria">
+      <End Role="Kategoria" EntitySet="Kategoria" />
+      <End Role="KategoriaPos" EntitySet="KategoriaPos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_KategoriaPos_Ksiazka" Association="Self.FK_KategoriaPos_Ksiazka">
+      <End Role="Ksiazka" EntitySet="Ksiazka" />
+      <End Role="KategoriaPos" EntitySet="KategoriaPos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Magazyn_Ksiazka" Association="Self.FK_Magazyn_Ksiazka">
+      <End Role="Ksiazka" EntitySet="Ksiazka" />
+      <End Role="Magazyn" EntitySet="Magazyn" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sprzedaz_Ksiazka" Association="Self.FK_Sprzedaz_Ksiazka">
+      <End Role="Ksiazka" EntitySet="Ksiazka" />
+      <End Role="Sprzedaz" EntitySet="Sprzedaz" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ZamowieniaPos_Ksiazka" Association="Self.FK_ZamowieniaPos_Ksiazka">
+      <End Role="Ksiazka" EntitySet="Ksiazka" />
+      <End Role="ZamowieniaPos" EntitySet="ZamowieniaPos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Kurier_Kurier" Association="Self.FK_Kurier_Kurier">
+      <End Role="Kurier" EntitySet="Kurier" />
+      <End Role="Kurier1" EntitySet="Kurier" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Zamowienia_Kurier" Association="Self.FK_Zamowienia_Kurier">
+      <End Role="Kurier" EntitySet="Kurier" />
+      <End Role="Zamowienia" EntitySet="Zamowienia" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GryPos_Zamowienia" Association="Self.FK_GryPos_Zamowienia">
+      <End Role="Zamowienia" EntitySet="Zamowienia" />
+      <End Role="GryPos" EntitySet="GryPos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ZamowieniaPos_Zamowienia" Association="Self.FK_ZamowieniaPos_Zamowienia">
+      <End Role="Zamowienia" EntitySet="Zamowienia" />
+      <End Role="ZamowieniaPos" EntitySet="ZamowieniaPos" />
+    </AssociationSet>
+    <AssociationSet Name="KlientPos" Association="Self.KlientPos">
+      <End Role="Klient" EntitySet="Klient" />
+      <End Role="Zamowienia" EntitySet="Zamowienia" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

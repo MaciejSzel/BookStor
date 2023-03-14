@@ -1,0 +1,49 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net48</TargetFramework>
+		<UseWPF>true</UseWPF>
+		<StartupObject>Projekcik.App</StartupObject>
+		<PlatformTarget>x86</PlatformTarget>
+		<AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <None Remove="Models\Entities\BookStore.edmx" />
+	  <None Remove="Models\Entities\Księgarnia.edmx" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EntityDeploy Include="Models\Entities\BookStore.edmx">
+	    <Generator>EntityModelCodeGenerator</Generator>
+	    <LastGenOutput>BookStore.Designer.cs</LastGenOutput>
+	  </EntityDeploy>
+	</ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="EntityFramework" Version="5.0.0" />
+    <PackageReference Include="MaterialDesignThemes" Version="4.6.1" />
+    <PackageReference Include="MvvmLight" Version="5.4.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Models\Entities\BookStore.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>BookStore.edmx</DependentUpon>
+    </Compile>
+    <Compile Update="Models\Entities\Księgarnia.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Księgarnia.edmx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+</Project>

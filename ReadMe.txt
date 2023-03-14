@@ -1,0 +1,1 @@
+Project won't work without database, in this pack there is BookStore.bak file which can be used to backup the database in Microsoft SQL Server Menagment Studio and also I attached a video presenting how the app works.

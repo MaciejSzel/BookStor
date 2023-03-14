@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="KsięgarniaDbModelStoreContainer" CdmEntityContainer="KsięgarniaDbEntities">
+    <EntitySetMapping Name="Demo">
+      <EntityTypeMapping TypeName="KsięgarniaDbModel.Demo">
+        <MappingFragment StoreEntitySet="Demo">
+          <ScalarProperty Name="IDDEMO" ColumnName="IDDEMO" />
+          <ScalarProperty Name="DEMO1" ColumnName="DEMO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Gry">
+      <EntityTypeMapping TypeName="KsięgarniaDbModel.Gry">
+        <MappingFragment StoreEntitySet="Gry">
+          <ScalarProperty Name="IdGry" ColumnName="IdGry" />
+          <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+          <ScalarProperty Name="Opis" ColumnName="Opis" />
+          <ScalarProperty Name="Ilosc" ColumnName="Ilosc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kategoria">
+      <EntityTypeMapping TypeName="KsięgarniaDbModel.Kategoria">
+        <MappingFragment StoreEntitySet="Kategoria">
+          <ScalarProperty Name="IdKategoria" ColumnName="IdKategoria" />
+          <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KategoriaPos">
+      <EntityTypeMapping TypeName="KsięgarniaDbModel.KategoriaPos">
+        <MappingFragment StoreEntitySet="KategoriaPos">
+          <ScalarProperty Name="IdKsiazki" ColumnName="IdKsiazki" />
+          <ScalarProperty Name="IdKategoria" ColumnName="IdKategoria" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Klient">
+      <EntityTypeMapping TypeName="KsięgarniaDbModel.Klient">
+        <MappingFragment StoreEntitySet="Klient">
+          <ScalarProperty Name="IdKlienta" ColumnName="IdKlienta" />
+          <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+          <ScalarProperty Name="Adres" ColumnName="Adres" />
+          <ScalarProperty Name="Mail" ColumnName="Mail" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ksiazka">
+      <EntityTypeMapping TypeName="KsięgarniaDbModel.Ksiazka">
+        <MappingFragment StoreEntitySet="Ksiazka">
+          <ScalarProperty Name="IdKsiazki" ColumnName="IdKsiazki" />
+          <ScalarProperty Name="Ilosc" ColumnName="Ilosc" />
+          <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+          <ScalarProperty Name="Opis" ColumnName="Opis" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kurier">
+      <EntityTypeMapping TypeName="KsięgarniaDbModel.Kurier">
+        <MappingFragment StoreEntitySet="Kurier">
+          <ScalarProperty Name="IdKuriera" ColumnName="IdKuriera" />
+          <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+          <ScalarProperty Name="Cena" ColumnName="Cena" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Zamowienia">
+      <EntityTypeMapping TypeName="KsięgarniaDbModel.Zamowienia">
+        <MappingFragment StoreEntitySet="Zamowienia">
+          <ScalarProperty Name="IdZamowienia" ColumnName="IdZamowienia" />
+          <ScalarProperty Name="IdKuriera" ColumnName="IdKuriera" />
+          <ScalarProperty Name="Ilosc" ColumnName="Ilosc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GryPos">
+      <EntityTypeMapping TypeName="KsięgarniaDbModel.GryPos">
+        <MappingFragment StoreEntitySet="GryPos">
+          <ScalarProperty Name="IdZamowienia" ColumnName="IdZamowienia" />
+          <ScalarProperty Name="IdGry" ColumnName="IdGry" />
+          <ScalarProperty Name="IloscZamowionych" ColumnName="IloscZamowionych" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KategoriaGryPos">
+      <EntityTypeMapping TypeName="KsięgarniaDbModel.KategoriaGryPos">
+        <MappingFragment StoreEntitySet="KategoriaGryPos">
+          <ScalarProperty Name="IdGry" ColumnName="IdGry" />
+          <ScalarProperty Name="IdKategoria" ColumnName="IdKategoria" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Magazyn">
+      <EntityTypeMapping TypeName="KsięgarniaDbModel.Magazyn">
+        <MappingFragment StoreEntitySet="Magazyn">
+          <ScalarProperty Name="IdKsiazki" ColumnName="IdKsiazki" />
+          <ScalarProperty Name="LiczbaWMagazynie" ColumnName="LiczbaWMagazynie" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pracownik">
+      <EntityTypeMapping TypeName="KsięgarniaDbModel.Pracownik">
+        <MappingFragment StoreEntitySet="Pracownik">
+          <ScalarProperty Name="IdPracownika" ColumnName="IdPracownika" />
+          <ScalarProperty Name="Imie" ColumnName="Imie" />
+          <ScalarProperty Name="Nazwisko" ColumnName="Nazwisko" />
+          <ScalarProperty Name="Stanowisko" ColumnName="Stanowisko" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rabat">
+      <EntityTypeMapping TypeName="KsięgarniaDbModel.Rabat">
+        <MappingFragment StoreEntitySet="Rabat">
+          <ScalarProperty Name="Rabat1" ColumnName="Rabat" />
+          <ScalarProperty Name="Kod" ColumnName="Kod" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sprzedaz">
+      <EntityTypeMapping TypeName="KsięgarniaDbModel.Sprzedaz">
+        <MappingFragment StoreEntitySet="Sprzedaz">
+          <ScalarProperty Name="IdKsiazki" ColumnName="IdKsiazki" />
+          <ScalarProperty Name="IloscSprzedanych" ColumnName="IloscSprzedanych" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ZamowieniaPos">
+      <EntityTypeMapping TypeName="KsięgarniaDbModel.ZamowieniaPos">
+        <MappingFragment StoreEntitySet="ZamowieniaPos">
+          <ScalarProperty Name="IdKsiazki" ColumnName="IdKsiazki" />
+          <ScalarProperty Name="IdZamowienia" ColumnName="IdZamowienia" />
+          <ScalarProperty Name="Ilosc" ColumnName="Ilosc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="KlientPos" TypeName="KsięgarniaDbModel.KlientPos" StoreEntitySet="KlientPos">
+      <EndProperty Name="Klient">
+        <ScalarProperty Name="IdKlienta" ColumnName="IdKlienta" />
+      </EndProperty>
+      <EndProperty Name="Zamowienia">
+        <ScalarProperty Name="IdZamowienia" ColumnName="IdZamowienia" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>
